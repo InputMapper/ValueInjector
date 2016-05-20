@@ -24,12 +24,10 @@ namespace ValueInjector
     {
 
         Setting ValType, FixedValue, ChannelValue, PluginValue;
-        dynamic cachedValue;
-        bool inVal;
+        dynamic cachedValue = 0d;
+        bool inVal = false;
         public ValueInjector(Guid guid) : base(guid)
         {
-            Setting ValType, FixedValue, ChannelValue, PluginValue;
-
             ValType = new Setting("Value Type", "Type of value that will be used", SettingControl.Dropdown, SettingType.Text, "fixed", true, true);
             ValType.configuration.Add("options", new List<string>() { "fixed", "input channel", "existing plugin value" });
             ValType.PropertyChanged += ValType_PropertyChanged; ;
